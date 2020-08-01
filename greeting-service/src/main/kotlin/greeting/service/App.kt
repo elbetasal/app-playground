@@ -3,6 +3,8 @@
  */
 package greeting.service
 
+import io.javalin.Javalin
+
 class App {
     val greeting: String
         get() {
@@ -11,5 +13,6 @@ class App {
 }
 
 fun main(args: Array<String>) {
-    println(App().greeting)
+    val app = Javalin.create().start(8080)
+    app.get("/greet") { it.result("Hello World") }
 }

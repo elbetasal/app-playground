@@ -7,7 +7,7 @@
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
     id("org.jetbrains.kotlin.jvm") version "1.3.61"
-
+    id("com.google.cloud.tools.jib") version "2.4.0"
     // Apply the application plugin to add support for building a CLI application.
     application
 }
@@ -19,16 +19,13 @@ repositories {
 }
 
 dependencies {
-    // Align versions of all Kotlin components
+
+    implementation("io.javalin:javalin:3.9.1")
+    implementation("org.slf4j:slf4j-simple:1.8.0-beta4")
+
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-
-    // Use the Kotlin JDK 8 standard library.
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-
-    // Use the Kotlin test library.
     testImplementation("org.jetbrains.kotlin:kotlin-test")
-
-    // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 }
 
@@ -36,3 +33,12 @@ application {
     // Define the main class for the application.
     mainClassName = "greeting.service.AppKt"
 }
+
+tasks {
+    test {
+        testLogging.showExceptions = true
+    }
+}
+
+
+jib.to.image = "pleymo/greeting-service"
