@@ -29,3 +29,7 @@ variable "port" {
 variable "cluster_id" {
     type = string
 }
+
+variable "desired_size" {
+    type = number
+}

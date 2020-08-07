@@ -26,7 +26,7 @@ module "hello-service" {
     service_name = "hello"
     port = 8080
     cluster_id = module.cluster.id
-    # size = 3 #Add size
+    desired_size = 3
 }
 
 output "url" {

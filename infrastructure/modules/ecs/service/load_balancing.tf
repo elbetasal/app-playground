@@ -3,7 +3,7 @@ resource "aws_alb" "main" {
   subnets = var.subnet_ids
   security_groups = [aws_security_group.aws-lb.id]
   tags = {
-    Name = "alb"
+    Name = "${var.environment}-load-balancer"
   }
 }
 
