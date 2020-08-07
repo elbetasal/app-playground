@@ -52,7 +52,4 @@ resource "aws_autoscaling_group" "ecs-autoscaling-group" {
   lifecycle {
     create_before_destroy = true
   }
-  tags = {
-    Name = "ecs-autoscaling-group"
-  }
 }

@@ -8,3 +8,4 @@
  */
 
 rootProject.name = "app-playground"
+include("greeting-service")
