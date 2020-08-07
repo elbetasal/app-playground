@@ -24,5 +24,9 @@ resource "aws_ecs_service" "test-ecs-service" {
   	cluster         = aws_ecs_cluster.aws-ecs.id
   	task_definition = aws_ecs_task_definition.hello-task.arn
   	desired_count   = 2
-
-}
+    load_balancer {
+    	target_group_arn  = aws_alb_target_group.nginx_app.arn
+    	container_port    = 8080
+    	container_name    = "hello"
+	}
+}   

@@ -1,3 +1,7 @@
+data "aws_availability_zones" "aws-east" {
+  state = "available"
+}
+
 resource "aws_vpc" "production-vpc" {
   cidr_block = "192.168.0.0/16"
   tags = {
@@ -6,8 +10,10 @@ resource "aws_vpc" "production-vpc" {
 }
 
 resource "aws_subnet" "production-subnet" {
+  count = length(slice(data.aws_availability_zones.aws-east.names,0, 2))
+  cidr_block = cidrsubnet(aws_vpc.production-vpc.cidr_block, 8, count.index + 1)
+  availability_zone = data.aws_availability_zones.aws-east.names[count.index]
   vpc_id = aws_vpc.production-vpc.id
-  cidr_block = "192.168.0.0/24"
   map_public_ip_on_launch = "true"
   tags = {
     Name = "production-subnet"
@@ -33,7 +39,8 @@ resource "aws_route_table" "production-route-table" {
  }
  
 resource "aws_route_table_association" "a" {
-  subnet_id      = aws_subnet.production-subnet.id
+  count = length(data.aws_availability_zones.aws-east.names)
+  subnet_id = element(aws_subnet.production-subnet.*.id, count.index)
   route_table_id = aws_route_table.production-route-table.id
 }
 
