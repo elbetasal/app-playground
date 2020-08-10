@@ -14,5 +14,7 @@ class App {
 
 fun main(args: Array<String>) {
     val app = Javalin.create().start(8080)
-    app.get("/greet") { it.result("Hello World") }
+    app.get("/") {it.result("")}
+    app.get("/health") { it.result("Ok") }
+    app.get("/greeting/") { it.result("Hello World") }
 }

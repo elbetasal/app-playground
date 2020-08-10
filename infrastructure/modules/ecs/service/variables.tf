@@ -33,3 +33,11 @@ variable "cluster_id" {
 variable "desired_size" {
     type = number
 }
+
+variable "lb_arn" {
+    type = string
+}
+
+variable "entrypoint" {
+    type = string
+}
