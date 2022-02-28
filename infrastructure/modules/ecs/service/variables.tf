@@ -49,3 +49,10 @@ variable "private_subnets" {
 variable "service_registry_arn" {
     type = string
 }
+
+variable "memory" {
+    type = number
+}
+variable "cpu" {
+    type = number
+}

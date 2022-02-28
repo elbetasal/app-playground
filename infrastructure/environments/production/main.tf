@@ -55,6 +55,8 @@ module "hello-service" {
   service_registry_id = module.cluster.service_discovery_registry_id
   service_registry_arn = module.cluster.service_discovery_registry_arn
   private_subnets = module.vpc.private_subnets
+  memory = 300
+  cpu = 10
 }
 
 //module "book-service" {

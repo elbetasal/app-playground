@@ -14,8 +14,17 @@ resource "aws_ecs_task_definition" "task" {
         "hostPort": ${var.port}
       }
     ],
-    "memory": 300,
-    "cpu": 10
+    "memory": ${var.memory},
+    "cpu": ${var.cpu},
+    "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "awslogs-logtest",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-create-group": "true",
+                    "awslogs-stream-prefix": "${var.environment}-${var.service_name}"
+                }
+            }
   }
 ]
 DEFINITION
