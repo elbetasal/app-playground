@@ -42,6 +42,17 @@ resource "aws_iam_role_policy_attachment" "ecs-task-role-attachment" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
 }
 
+resource "aws_iam_policy_attachment" "ssm-agent" {
+  name       = "ssm-managed-instance-policy"
+  roles      = [aws_iam_role.ecs-task-role.id]
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+}
+
+resource "aws_iam_policy_attachment" "ssm-role" {
+  name       = "ssm-amazon-ec2-role"
+  roles      = [aws_iam_role.ecs-task-role.id]
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
+}
 
 resource "aws_iam_instance_profile" "ecs-instance-profile" {
     name = "ecs-instance-profile"

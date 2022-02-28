@@ -2,10 +2,6 @@ variable "environment" {
     type = string
 }
 
-variable "subnet_ids" {
-    type = list
-}
-
 variable "vpc_id" {
     type = string
 }
@@ -39,5 +35,17 @@ variable "lb_arn" {
 }
 
 variable "entrypoint" {
+    type = string
+}
+
+variable "service_registry_id" {
+    type = string
+}
+
+variable "private_subnets" {
+    type = list(string)
+}
+
+variable "service_registry_arn" {
     type = string
 }

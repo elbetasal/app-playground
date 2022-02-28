@@ -1,31 +1,31 @@
-variable "name" {  
-    type = string
+variable "cluster_name" {
+  type = string
 }
 
 variable "size" {
-    type = number
+  type = number
 }
 
 variable "instance_type" {
-    type = string
-    default = "t2.micro"
-    description = "EC2 type for the cluster's instances"
+  type        = string
+  default     = "t2.micro"
+  description = "EC2 type for the cluster's instances"
 }
 
-variable "ssh_key_name"  {
-    type = string
-    default = "my-pocs"
-    description = "Key name to be used to SSH to the instances"
+variable "ssh_key_name" {
+  type        = string
+  default     = "production-ecs"
+  description = "Key name to be used to SSH to the instances"
 }
 
-variable "subnet_ids" { 
-    type = list
+variable "subnet_ids" {
+  type = list(any)
 }
 
 variable "environment" {
-    type = string
+  type = string
 }
 
 variable "vpc_id" {
-    type = string
+  type = string
 }

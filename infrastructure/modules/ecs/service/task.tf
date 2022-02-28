@@ -1,5 +1,7 @@
 resource "aws_ecs_task_definition" "task" {
     family                = var.service_name
+    network_mode = "awsvpc"
+    requires_compatibilities = ["EC2"]
     container_definitions = <<DEFINITION
 [
   {
@@ -12,7 +14,7 @@ resource "aws_ecs_task_definition" "task" {
         "hostPort": ${var.port}
       }
     ],
-    "memory": 500,
+    "memory": 300,
     "cpu": 10
   }
 ]

@@ -1,17 +1,11 @@
-resource "aws_security_group" "ecs-cluster-host" {
-  name        = "ecs-cluster-host"
-  description = "ecs-cluster-host"
+resource "aws_security_group" "service-security-group" {
+  name        = "${var.environment}-${var.service_name}"
+  description = "Security Group for service"
   vpc_id      = var.vpc_id
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
 
   ingress {
-    from_port   = 1025
-    to_port     = 65535
+    from_port   = var.port
+    to_port     = var.port
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }

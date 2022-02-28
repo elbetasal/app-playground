@@ -3,6 +3,7 @@ resource "aws_lb_target_group" "app" {
   port = var.port
   protocol = "HTTP"
   vpc_id = var.vpc_id
+  target_type = "ip"
 
   health_check {
     healthy_threshold = "3"
@@ -17,3 +18,4 @@ resource "aws_lb_target_group" "app" {
     Name = "${var.environment}-${var.service_name}"
   }
 }
+
