@@ -56,3 +56,14 @@ variable "memory" {
 variable "cpu" {
     type = number
 }
+variable "app_mesh" {
+    type = string
+}
+
+variable "root_domain" {
+    type = string
+}
+
+locals {
+    domain_namespace = "${var.environment}.${var.root_domain}"
+}

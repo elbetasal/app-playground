@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: org.elbeta.users
+testFramework: junit
+sourceLanguage: kotlin
+buildTool: gradle_kotlin
+features: [annotation-api, app-name, flyway, gradle, http-client, jackson-databind, jdbc-hikari, jooq, junit, kotlin, kotlin-build, ktor, logback, micronaut-build, postgres, readme, shade, testcontainers, yaml]

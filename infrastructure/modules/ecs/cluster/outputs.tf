@@ -13,3 +13,7 @@ output "service_discovery_registry_id" {
 output "service_discovery_registry_arn" {
     value = aws_service_discovery_private_dns_namespace.ecs-namespace.arn
 }
+
+output "domain" {
+    value = local.domain_namespace
+}

@@ -1,7 +1,6 @@
 resource "aws_ecs_task_definition" "task" {
     family                = var.service_name
     network_mode = "awsvpc"
-    requires_compatibilities = ["EC2"]
     container_definitions = <<DEFINITION
 [
   {

@@ -29,3 +29,13 @@ variable "environment" {
 variable "vpc_id" {
   type = string
 }
+
+variable "domain" {
+  type = string
+  default = "elbeta.dev"
+}
+
+locals {
+  domain_namespace = "${var.environment}.${var.domain}"
+}
+
