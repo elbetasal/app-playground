@@ -1,9 +1,12 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.6.10"
     id("org.jetbrains.kotlin.kapt") version "1.6.10"
     id("org.jetbrains.kotlin.plugin.allopen") version "1.6.10"
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("io.micronaut.application") version "3.3.0"
+    id ("com.google.cloud.tools.jib") version "3.2.1"
 }
 
 version = "0.1"
@@ -69,4 +72,7 @@ micronaut {
     }
 }
 
+
+tasks.withType(ShadowJar::class.java)
+        .configureEach(ShadowJar::mergeServiceFiles)
 
