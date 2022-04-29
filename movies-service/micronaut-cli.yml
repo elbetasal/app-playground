@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: org.elbetasal.movies
+testFramework: spock
+sourceLanguage: kotlin
+buildTool: gradle_kotlin
+features: [ annotation-api, app-name, gradle, http-client, jackson-databind, kotlin, kotlin-build, ktor, logback, micronaut-build, readme, shade, spock, yaml ]
