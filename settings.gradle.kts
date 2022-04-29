@@ -8,4 +8,3 @@
  */
 
 rootProject.name = "app-playground"
-include("movies-service")

@@ -1,9 +1,0 @@
-micronaut:
-  application:
-    name: moviesService
-datasources:
-  default:
-    url: jdbc:postgresql://${DB_HOST:localhost}:5432/postgres
-    driverClassName: org.postgresql.Driver
-    username: ${DB_USER:postgres}
-    password: ${DB_PASSWORD:postgres}
