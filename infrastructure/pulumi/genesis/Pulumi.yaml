@@ -1,0 +1,3 @@
+name: genesis
+runtime: nodejs
+description: Project to create aws resources for the playground
